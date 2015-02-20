@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>CLDR to PHP format convertor</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="cldr-2-php-convertor.js"></script>
+  <style>
+    #cldr-format, #php-format, #php-format-compliance {
+      width: 300px;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid black;
+      vertical-align: middle;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<h1>CLDR to PHP dateformat converter</h1>
+
+<p>Convert any CLDR date/time format to PHP format</p>
+<ul>
+  <li><a href="http://cldr.unicode.org/">http://cldr.unicode.org/</a></li>
+  <li>
+    <a href="http://cldr.unicode.org/index/downloads/cldr-26-0-1">http://cldr.unicode.org/index/downloads/cldr-26-0-1</a>
+  </li>
+  <li>
+    <a href="http://en.wikipedia.org/wiki/Date_format_by_country">http://en.wikipedia.org/wiki/Date_format_by_country</a>
+  </li>
+  <li>
+    <a href="http://userguide.icu-project.org/formatparse/datetime">http://userguide.icu-project.org/formatparse/datetime</a>
+  </li>
+</ul>
+
+<p>&copy; Niels de Feyter 2015</p>
+
+<h2>Paste CLDR date/time format</h2>
+<input value="EEEE d MMMM y G, HH:mm:ss zzzz" id="cldr-format" />
+<button id="convert">Convert</button>
+
+<h2>Converted PHP date/time format</h2>
+
+<h3>* means that it could not be mapped</h3>
+
+<p id="php-format"></p>
+
+<h3>unmappable formatters are removed (compliance mode)</h3>
+
+<p id="php-format-compliance"></p>
+<a href="https://www.functions-online.com/date.html" target="_blank">Test php format here.</a>
+<br/><br/>
+<fieldset>
+  <legend>Replacement mapping</legend>
+  <code>
+  // Era is not implemented.<br/>
+  "GGGGG": fallback_replacement,<br/>
+  "GGGG": fallback_replacement,<br/>
+  "GGG": fallback_replacement,<br/>
+  "GG": fallback_replacement,<br/>
+  "G": fallback_replacement,<br/>
+  // Year.<br/>
+  "yyyy": "Y", // 1999<br/>
+  "yy": "y", // 99<br/>
+  "y": "Y", // 1999<br/>
+  // Month.<br/>
+  "MMMM": "F",<br/>
+  "MMM": "M",<br/>
+  "MM": "m",<br/>
+  "M": "m",<br/>
+  // Day.<br/>
+  "dd": "d",<br/>
+  "d": "j",<br/>
+  // Day of week.<br/>
+  "EEEEEE": fallback_replacement, // Tu<br/>
+  "EEEEE": fallback_replacement, // T<br/>
+  "EEEE": "l", // Tuesday<br/>
+  "EEE": "D", // Tue<br/>
+  "EE": "D", // Tue<br/>
+  "E": "D", // Tue<br/>
+  // Am/PM<br/>
+  "a": "a",<br/>
+  // hours<br/>
+  "HH": "H", // 24-hour format of an hour with leading zeros<br/>
+  "H": "G", // 24-hour format of an hour without leading zeros<br/>
+  "h": "h", // 12-hour format of an hour with leading zeros<br/>
+  "K": "g", // 12-hour format of an hour without leading zero<br/>
+  // minutes<br/>
+  "mm": "i", // Minutes with leading zeros<br/>
+  "ss": "s", // Seconds, with leading zeros<br/>
+  // timezone.<br/>
+  "z": "T", // Timezone abbreviation<br/>
+  "zz": "T", // Timezone abbreviation<br/>
+  "zzz": "T", // Timezone abbreviation<br/>
+  "zzzz": "e", // Timezone<br/>
+  </code>
+</fieldset>
+</body>
+</html>
