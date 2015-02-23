@@ -9,6 +9,7 @@ http://en.wikipedia.org/wiki/Date_format_by_country
 http://userguide.icu-project.org/formatparse/datetime
 
 # Mapping
+<pre>
 // Era is not implemented.
 "GGGGG": fallback_replacement,
 "GGGG": fallback_replacement,
@@ -49,3 +50,4 @@ http://userguide.icu-project.org/formatparse/datetime
 "zz": "T", // Timezone abbreviation
 "zzz": "T", // Timezone abbreviation
 "zzzz": "e", // Timezone
+</pre>
